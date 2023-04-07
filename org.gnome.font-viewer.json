@@ -38,11 +38,24 @@
         {
             "name": "gnome-font-viewer",
             "buildsystem": "meson",
+            "cleanup": [
+                "org.gnome.font-viewer.svg"
+            ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/gnome-font-viewer.git",
                     "tag": "42.0"
+                }
+            ]
+        },
+        {
+            "name": "customizations",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
                 }
             ]
         }
