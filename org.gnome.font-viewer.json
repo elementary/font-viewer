@@ -45,6 +45,9 @@
         {
             "name": "gnome-font-viewer",
             "buildsystem": "meson",
+            "cleanup": [
+                "org.gnome.font-viewer.svg"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -54,6 +57,16 @@
                         "type": "gnome",
                         "name": "gnome-font-viewer"
                     }
+                }
+            ]
+        },
+        {
+            "name": "customizations",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
                 }
             ]
         }
