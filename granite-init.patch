@@ -1,0 +1,48 @@
+diff --git a/meson.build b/meson.build
+index 4c5ce6b..3f30309 100644
+--- a/meson.build
++++ b/meson.build
+@@ -28,6 +28,7 @@ libadwaita_req_version = '>= 1.2.alpha'
+ harfbuzz_req_version = '>= 0.9.9'
+ 
+ glib_dep = dependency('glib-2.0', version: glib_req_version)
++granite_dep = dependency('granite-7', version: '>= 7.2.0')
+ gtk_dep = dependency('gtk4', version: gtk_req_version)
+ libadwaita_dep = dependency('libadwaita-1', version: libadwaita_req_version)
+ harfbuzz_dep = dependency('harfbuzz', version: harfbuzz_req_version)
+diff --git a/src/font-view-application.c b/src/font-view-application.c
+index 7dd050f..d097d04 100644
+--- a/src/font-view-application.c
++++ b/src/font-view-application.c
+@@ -163,6 +163,7 @@ font_view_application_activate (GApplication *application)
+ static void
+ font_view_application_init (FontViewApplication *self)
+ {
++    granite_init ();
+     /* do nothing */
+ }
+ 
+diff --git a/src/font-view-application.h b/src/font-view-application.h
+index dcf1c48..bd98e26 100644
+--- a/src/font-view-application.h
++++ b/src/font-view-application.h
+@@ -24,6 +24,7 @@
+ #pragma once
+ 
+ #include <adwaita.h>
++#include <granite-7.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/src/meson.build b/src/meson.build
+index c0cc0a8..42fc454 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -38,6 +38,7 @@ executable('gnome-font-viewer', viewer_sources + resources,
+   dependencies: [
+     mathlib_dep,
+     glib_dep,
++    granite_dep,
+     gtk_dep,
+     libadwaita_dep,
+     harfbuzz_dep,
