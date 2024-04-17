@@ -1,0 +1,12 @@
+diff --git a/src/gnome-font-viewer.gresource.xml b/src/gnome-font-viewer.gresource.xml
+index 5f6adf1..47269dd 100644
+--- a/src/gnome-font-viewer.gresource.xml
++++ b/src/gnome-font-viewer.gresource.xml
+@@ -2,6 +2,6 @@
+ <gresources>
+   <gresource prefix="/org/gnome/font-viewer">
+     <file compressed="true">font-view-window.ui</file>
+-    <file>style.css</file>
++    <file alias="Application.css">style.css</file>
+   </gresource>
+ </gresources>
