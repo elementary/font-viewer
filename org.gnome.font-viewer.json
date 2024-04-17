@@ -57,6 +57,14 @@
                         "type": "gnome",
                         "name": "gnome-font-viewer"
                     }
+                },
+                {
+                    "type": "patch",
+                    "path": "granite-init.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "css-rename.patch"
                 }
             ]
         },
