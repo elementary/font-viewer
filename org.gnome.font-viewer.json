@@ -1,7 +1,7 @@
 {
     "app-id": "org.gnome.font-viewer",
     "runtime": "io.elementary.Platform",
-    "runtime-version": "8.0",
+    "runtime-version": "8",
     "sdk": "io.elementary.Sdk",
     "command": "gnome-font-viewer",
     "finish-args": [
