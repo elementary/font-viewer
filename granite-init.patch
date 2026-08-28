@@ -1,17 +1,17 @@
 diff --git a/meson.build b/meson.build
-index 8369478..39358d8 100644
+index aaadc84..5926219 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -28,6 +28,7 @@ libadwaita_req_version = '>= 1.5'
  harfbuzz_req_version = '>= 0.9.9'
  
  glib_dep = dependency('glib-2.0', version: glib_req_version)
-+granite_dep = dependency('granite-7', version: '>= 7.2.0')
++granite_dep = dependency('granite-7', version: '>= 7.7.0')
  gtk_dep = dependency('gtk4', version: gtk_req_version)
  libadwaita_dep = dependency('libadwaita-1', version: libadwaita_req_version)
  harfbuzz_dep = dependency('harfbuzz', version: harfbuzz_req_version)
 diff --git a/src/font-view-application.c b/src/font-view-application.c
-index 90f5488..47a4221 100644
+index 33d9e24..1f06551 100644
 --- a/src/font-view-application.c
 +++ b/src/font-view-application.c
 @@ -38,6 +38,7 @@
@@ -22,17 +22,10 @@ index 90f5488..47a4221 100644
  
  #include "font-view-application.h"
  #include "font-view-window.h"
-@@ -141,6 +142,15 @@ font_view_application_startup (GApplication *application)
+@@ -141,6 +142,8 @@ font_view_application_startup (GApplication *application)
  {
      FontViewApplication *self = FONT_VIEW_APPLICATION (application);
  
-+    // granite_init() calls gdk_display_manager_get() internally without
-+    // initializing Gtk, which is illegal and causes an intentional
-+    // crash since Gtk 4.17. So, initialize Gtk explicitly here as a
-+    // workaround.
-+    // TODO: Remove this when https://github.com/elementary/granite/pull/893 is released
-+    gtk_init ();
-+
 +    granite_init ();
 +
      G_APPLICATION_CLASS (font_view_application_parent_class)
